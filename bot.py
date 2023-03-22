@@ -49,7 +49,7 @@ class feishuBot:
                 Color.print_success('[+] feishuBot 发送成功')
             else:
                 Color.print_failed('[-] feishuBot 发送失败')
-                print(r.text)
+                print(r.all_text)
 
     def send_markdown(self, text):
         # TODO 富文本
@@ -78,22 +78,22 @@ class wecomBot:
 
     def send(self, text_list: list):
         limiter = Limiter(RequestRate(20, Duration.MINUTE))     # 频率限制，20条/分钟
-        print("******")
-        print(text_list)
+        all_text = "## " + datetime.now().strftime('%Y-%m-%d') + "\n"
         for text in text_list:
-            with limiter.ratelimit('identity', delay=True):
-                print(f'{len(text)} {text[:50]}...{text[-50:]}')
+            all_text += text + "\n"
+        with limiter.ratelimit('identity', delay=True):
+            # print(f'{len(text)} {text[:50]}...{text[-50:]}')
 
-                data = {"msgtype": "markdown", "markdown": {"content": text}}
-                headers = {'Content-Type': 'application/json'}
-                url = f'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key={self.key}'
-                r = requests.post(url=url, headers=headers, data=json.dumps(data), proxies=self.proxy)
+            data = {"msgtype": "markdown", "markdown": {"content": all_text}}
+            headers = {'Content-Type': 'application/json'}
+            url = f'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key={self.key}'
+            r = requests.post(url=url, headers=headers, data=json.dumps(data), proxies=self.proxy)
 
-                if r.status_code == 200:
-                    Color.print_success('[+] wecomBot 发送成功')
-                else:
-                    Color.print_failed('[-] wecomBot 发送失败')
-                    print(r.text)
+            if r.status_code == 200:
+                Color.print_success('[+] wecomBot 发送成功')
+            else:
+                Color.print_failed('[-] wecomBot 发送失败')
+                print(r.text)
 
 
 class dingtalkBot:
