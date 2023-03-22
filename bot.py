@@ -78,6 +78,8 @@ class wecomBot:
 
     def send(self, text_list: list):
         limiter = Limiter(RequestRate(20, Duration.MINUTE))     # 频率限制，20条/分钟
+        print("******")
+        print(text_list)
         for text in text_list:
             with limiter.ratelimit('identity', delay=True):
                 print(f'{len(text)} {text[:50]}...{text[-50:]}')
