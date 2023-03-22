@@ -111,6 +111,7 @@ def init_bot(conf: dict, proxy_url=''):
     """初始化机器人"""
     bots = []
     for name, v in conf.items():
+        print("#####", v)
         if v['enabled']:
             key = os.getenv(v['secrets']) or v['key']
 
