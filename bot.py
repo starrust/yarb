@@ -80,7 +80,7 @@ class wecomBot:
         limiter = Limiter(RequestRate(20, Duration.MINUTE))     # 频率限制，20条/分钟
         count = 1
         for text in text_list:
-            text = "## " + datetime.now().strftime('%Y-%m-%d') + ":" + str(count) + " " + text
+            text = "## " + datetime.now().strftime('%Y-%m-%d') + ":" + str(count) + " " + text[3:]
             count += 1
             with limiter.ratelimit('identity', delay=True):
                 # print(f'{len(text)} {text[:50]}...{text[-50:]}')
