@@ -82,7 +82,7 @@ class wecomBot:
         new_text = ""
         for i in range(len(text_list)):
             new_text += text_list[i] + "\n"
-            if i % 10 == 9:
+            if i % 5 == 4:
                 new_text_list.append(new_text)
                 new_text = ""
         if new_text != "":
@@ -105,7 +105,7 @@ class wecomBot:
                 else:
                     Color.print_failed('[-] wecomBot 发送失败')
                     print(r.text)
-            time.sleep(10)
+            time.sleep(1)
             print(datetime.now())
 
 
