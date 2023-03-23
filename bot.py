@@ -106,6 +106,7 @@ class wecomBot:
                     Color.print_failed('[-] wecomBot 发送失败')
                     print(r.text)
             time.sleep(10)
+            print(datetime.now())
 
 
 class dingtalkBot:
