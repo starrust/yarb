@@ -90,7 +90,7 @@ class wecomBot:
         text_list = new_text_list
         count = 1
         for text in text_list:
-            text = "## " + datetime.now().strftime('%Y-%m-%d') + ":" + str(count) + " " + text[3:]
+            text = "## " + datetime.now().strftime('%Y-%m-%d') + ":" + str(count) + "\n" + text
             count += 1
             with limiter.ratelimit('identity', delay=True):
                 # print(f'{len(text)} {text[:50]}...{text[-50:]}')
@@ -105,6 +105,7 @@ class wecomBot:
                 else:
                     Color.print_failed('[-] wecomBot 发送失败')
                     print(r.text)
+            time.sleep(1)
 
 
 class dingtalkBot:
