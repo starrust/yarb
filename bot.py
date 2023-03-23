@@ -85,8 +85,8 @@ class wecomBot:
             if i % 10 == 9:
                 new_text_list.append(new_text)
                 new_text = ""
-        if new_text != ""
-        new_text_list.append(new_text)
+        if new_text != "":
+            new_text_list.append(new_text)
         text_list = new_text_list
         count = 1
         for text in text_list:
