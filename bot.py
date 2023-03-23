@@ -105,7 +105,7 @@ class wecomBot:
                 else:
                     Color.print_failed('[-] wecomBot 发送失败')
                     print(r.text)
-            time.sleep(3)
+            time.sleep(5)
 
 
 class dingtalkBot:
